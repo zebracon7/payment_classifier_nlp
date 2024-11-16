@@ -20,16 +20,16 @@ COPY requirements.txt .
 # Устанавливаем зависимости
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Создаем директорию для модели
-RUN mkdir -p data/model
-
-# Скачиваем и распаковываем модель
-RUN wget -O model.zip "https://drive.google.com/file/d/1F34WRZNYyn2EI1ZlE1W8PjrhlGrqGarL/view?usp=sharing"
-RUN unzip model.zip -d data/model
-RUN rm model.zip
+# Устанавливаем gdown для загрузки файлов с Google Drive
+RUN pip install gdown
 
 # Копируем остальные файлы проекта
 COPY . .
 
 # Устанавливаем команду по умолчанию
-CMD ["python", "predict.py"]
+CMD sh -c "\
+    gdown --id 1F34WRZNYyn2EI1ZlE1W8PjrhlGrqGarL -O model.zip && \
+    unzip model.zip -d data/ && \
+    rm model.zip && \
+    python predict.py \
+"

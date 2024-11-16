@@ -7,7 +7,6 @@
 - `predict.py` - скрипт для классификации новых данных.
 - `requirements.txt` - список зависимостей.
 - `Dockerfile` - файл для создания Docker-образа.
-- `run.sh` - скрипт запуска внутри контейнера.
 - `data/` - папка с данными.
 
 ## Запуск с использованием Docker
@@ -15,7 +14,7 @@
 1. **Клонировать репозиторий:**
 
    ```bash
-   git clone https://github.com/payment_classifier_nlp
+   git clone https://github.com/zebracon7/payment_classifier_nlp
 2. **Перейти в директорию проекта:**
 
     ```bash
